@@ -9,13 +9,13 @@ router.route('/posts')
 
   // get all the posts (accessed at GET http://localhost:3000/posts)
   .get(function(req, res) {
-
+  	res.send('get request on posts');
   });
 
 router.route('/posts/:post_id')
   // get the post with that id (accessed at GET http://localhost:3000/posts/:post_id)
   .get(function(req, res) {
-
+  	res.json({post_id: 'test post with post id'});
   })
 
   // update the post with this id (accessed at PUT http://localhost:3000/posts/:post_id)
