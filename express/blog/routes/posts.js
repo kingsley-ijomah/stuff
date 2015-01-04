@@ -15,6 +15,11 @@ router.route('/posts/new')
     res.render('posts/new');
   });
 
+router.route('/posts/archive')
+  .get(function(req, res) {
+    res.render('posts/archive');
+  });
+
 router.route('/posts/:post_id')
   .get(function(req, res) {
     res.render('posts/view');
