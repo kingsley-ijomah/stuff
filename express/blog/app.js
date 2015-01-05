@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var hbs = require('hbs');
 
 var app = express();
 
@@ -16,6 +17,9 @@ app.set('views', path.join(__dirname, 'views'));
 //use .html extensions instead of .handlebars/hbs
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
+
+// register path to partials
+hbs.registerPartials(__dirname + '/views/partials');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
