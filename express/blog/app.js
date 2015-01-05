@@ -36,6 +36,10 @@ app.get('/login', function(req, res) {
   res.render('static/login');
 });
 
+app.get('/contact', function(req, res) {
+  res.render('static/contact');
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
