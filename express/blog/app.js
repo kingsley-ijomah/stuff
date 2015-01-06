@@ -4,7 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var hbs = require('hbs');
+var ejs = require('ejs');
+var expressLayouts = require('express-ejs-layouts');
 var ConnectMincer = require('connect-mincer');
 
 var app = express();
@@ -35,11 +36,20 @@ app.use(require('./routes/posts'));
 app.set('views', path.join(__dirname, 'views'));
 
 //use .html extensions instead of .handlebars/hbs
-app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
+// app.set('view engine', 'html');
+// app.engine('html', require('hbs').__express);
 
-// register path to partials
-hbs.registerPartials(__dirname + '/views/partials');
+// make use of the ejs template
+app.set('view engine', 'ejs');
+
+// express-ejs-layouts module make it possible to use
+// default layout, would work without the line below
+// as layout is the default used
+app.set('layout', 'layout');
+
+// plug in expressLayouts into middleware making it possible
+// to use layout.ejs in /views
+app.use(expressLayouts);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
