@@ -5,15 +5,35 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('hbs');
+var ConnectMincer = require('connect-mincer');
 
 var app = express();
+
+// setting up mincer (sprocket style) asset manager
+var connectMincer = new ConnectMincer({
+  root: __dirname,
+  production: process.env.NODE_ENV === 'production',
+  mountPoint: '/assets',
+  manifestFile: __dirname + '/public/assets/manifest.json',
+  paths: [
+    'assets/css',
+    'assets/js',
+    'vendor/js'
+  ]
+});
+
+// plug mincer into middleware
+app.use(connectMincer.assets());
+
+if (process.env.NODE_ENV !== 'production')
+  app.use('/assets', connectMincer.createServer());
 
 // attach posts router into app
 app.use(require('./routes/posts'));
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+
 //use .html extensions instead of .handlebars/hbs
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
