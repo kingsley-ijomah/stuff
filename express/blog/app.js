@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
-var expressLayouts = require('express-ejs-layouts');
 var ConnectMincer = require('connect-mincer');
+var engine = require('ejs-mate');
 
 var app = express();
 
@@ -42,14 +42,11 @@ app.set('views', path.join(__dirname, 'views'));
 // make use of the ejs template
 app.set('view engine', 'ejs');
 
-// express-ejs-layouts module make it possible to use
-// default layout, would work without the line below
-// as layout is the default used
-app.set('layout', 'layout');
+// use ejs-locals for all ejs templates 'ejs-mate'
+// makes it possible for us to use layout '/views/boilerplate.js'
+// also makes it possible for us to use partial in views
+app.engine('ejs', engine);
 
-// plug in expressLayouts into middleware making it possible
-// to use layout.ejs in /views
-app.use(expressLayouts);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
