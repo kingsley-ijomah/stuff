@@ -8,7 +8,9 @@
 
     <%- css('main.css') %>
     <%- css('application.js') %>
-    
+    <!-- method from ejs-mate callable from views -->
+    <%- block('head').toString() %>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
