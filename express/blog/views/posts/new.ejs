@@ -7,15 +7,15 @@
     <%- partial('../partials/_profile') %>
 
     <div class="col-md-8">
-      <form>
+      <form method="POST" action="/posts">
         <h3>New Post</h3>
         <p>
           <label class="sr-only">Title</label>
-          <input type="email" class="form-control" placeholder="Title" required autofocus>
+          <input type="text" class="form-control" placeholder="Title" name="title" required autofocus>
         </p>
         <p>
           <label class="sr-only">Tags</label>
-          <select class="form-control" class="multiselect" multiple="multiple">
+          <select class="form-control" class="multiselect" multiple="multiple" name="tags" required>
             <option selected="selected">Select tags:</option>
             <option>html</option>
             <option>css</option>
@@ -25,7 +25,7 @@
         </p>
         <p>
           <label class="sr-only">Article</label>
-          <textarea class="form-control" placeholder="Article" id="textarea" required></textarea>
+          <textarea class="form-control" placeholder="Article" id="textarea" name="article" required></textarea>
         </p>
         <p><input type="submit" value="Post Article" class="btn btn-primary"></p>
       </form>

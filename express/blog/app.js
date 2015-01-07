@@ -29,6 +29,15 @@ app.use(connectMincer.assets());
 if (process.env.NODE_ENV !== 'production')
   app.use('/assets', connectMincer.createServer());
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
 // attach posts router into app
 app.use(require('./routes/posts'));
 
@@ -46,15 +55,6 @@ app.set('view engine', 'ejs');
 // makes it possible for us to use layout '/views/boilerplate.js'
 // also makes it possible for us to use partial in views
 app.engine('ejs', engine);
-
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
   res.render('posts/index');

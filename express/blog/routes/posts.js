@@ -3,7 +3,8 @@ var router = express.Router();
 
 router.route('/posts')
   .post(function(req, res) {
-
+    console.log(req.body);
+    res.send('hello');
   })
 
   .get(function(req, res) {
