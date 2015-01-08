@@ -14,11 +14,8 @@ var Post = mongoose.model('Post');
 
 router.route('/posts')
   .post(function(req, res) {
-    new Post({
-      title: req.body.title,
-      tags: req.body.tags,
-      article: req.body.article 
-    }).create();
+    var post = new Post(req.body)
+    post.create();
     res.render('posts/index');
   })
 
