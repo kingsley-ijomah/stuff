@@ -19,7 +19,7 @@ router.route('/posts')
       tags: req.body.tags,
       article: req.body.article 
     }).create();
-    res.send('done!');
+    res.render('posts/index');
   })
 
   .get(function(req, res) {
