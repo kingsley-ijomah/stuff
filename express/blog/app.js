@@ -7,36 +7,6 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var ConnectMincer = require('connect-mincer');
 var engine = require('ejs-mate');
-var mongoose = require('mongoose');
-
-// ===================
-mongoose.connect('mongodb://localhost/blog');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', function (callback) {
-  var PostSchema = mongoose.Schema({
-      title: String,
-      tags: String,
-      article: String,
-  });
-
-  var Post = mongoose.model('Post', PostSchema);
-
-  var record = new Post({ 
-    title: 'This is the second post example',
-    tags: 'html',
-    article: 'This is the article content area' 
-  });
-
-  record.save(function(err, result) {
-    if (err) return console.error(err);
-    // result.speak();
-  });
-});
-
-// ====================
 
 var app = express();
 
