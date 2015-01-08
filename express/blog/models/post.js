@@ -2,21 +2,21 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/blog');
 
-var PostSchema = mongoose.Schema({
+var Schema = mongoose.Schema({
     title: String,
     tags: String,
     article: String,
 });
 
-var Post = mongoose.model('Post', PostSchema);
+var Post = mongoose.model('Post', Schema);
 
-var record = new Post({ 
-  title: 'This is the second post example',
-  tags: 'html',
-  article: 'This is the article content area' 
-});
-
-record.save(function(err, result) {
-  if (err) return console.error(err);
-  // result.speak();
-});
+exports.create = function (req, res){
+  new Post({
+    title: req.body.title,
+    tags: req.body.tags,
+    article: req.body.article 
+  }).save(function(err, result) {
+    if (err) return console.error(err);
+    //result.something...
+  });
+};

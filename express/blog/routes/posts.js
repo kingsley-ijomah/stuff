@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var Post = require('../models/post');
 
 router.route('/posts')
   .post(function(req, res) {
-    console.log(req.body);
-    res.send('hello');
+    Post.create(req, res);
+    res.send('done!');
   })
 
   .get(function(req, res) {
