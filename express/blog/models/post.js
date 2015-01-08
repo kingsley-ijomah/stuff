@@ -1,22 +1,40 @@
+/**
+* Module dependencies
+*/
+
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/blog');
+var Schema = mongoose.Schema;
 
-var Schema = mongoose.Schema({
+/**
+* Post schema
+*/
+
+var PostSchema = new Schema({
     title: String,
     tags: String,
-    article: String,
+    article: String
 });
 
-var Post = mongoose.model('Post', Schema);
+/**
+* Methods
+*/
 
-exports.create = function (req, res){
-  new Post({
-    title: req.body.title,
-    tags: req.body.tags,
-    article: req.body.article 
-  }).save(function(err, result) {
-    if (err) return console.error(err);
-    //result.something...
-  });
-};
+PostSchema.methods = {
+
+  /**
+  * Create a new post record
+  * 
+  * @param {Object} req
+  * @param {Object} res
+  */
+
+  create: function (){
+    this.save(function(err, result) {
+      if (err) return console.error(err);
+      //result.something...
+    });
+  }
+}
+
+mongoose.model('Post', PostSchema);

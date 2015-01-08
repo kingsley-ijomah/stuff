@@ -1,10 +1,24 @@
+
+/**
+ * Module dependencies.
+ */
+
 var express = require('express');
 var router = express.Router();
-var Post = require('../models/post');
+var mongoose = require('mongoose');
+var Post = mongoose.model('Post');
+
+/**
+* Define routes
+*/
 
 router.route('/posts')
   .post(function(req, res) {
-    Post.create(req, res);
+    new Post({
+      title: req.body.title,
+      tags: req.body.tags,
+      article: req.body.article 
+    }).create();
     res.send('done!');
   })
 

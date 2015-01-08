@@ -1,3 +1,13 @@
+/*!
+ * nodejs-express-mongoose-blog-demo
+ * Copyright(c) 2015 Kingsley Ijomah <kingsley.ijomah@gmail.com>
+ * MIT Licensed
+ */
+
+/**
+* Module dependencies
+*/
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,8 +17,26 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var ConnectMincer = require('connect-mincer');
 var engine = require('ejs-mate');
+var fs = require('fs');
+var mongoose = require('mongoose');
 
 var app = express();
+
+// Connect to mongodb
+var connect = function () {
+  var options = { server: { socketOptions: { keepAlive: 1 } } };
+  mongoose.connect('mongodb://localhost/blog', options);
+};
+connect();
+
+mongoose.connection.on('error', console.log);
+mongoose.connection.on('disconnected', connect);
+
+// Load all .js files in models dir
+fs.readdirSync(__dirname + '/models').forEach(function (file) {
+  if (~file.indexOf('.js')) require(__dirname + '/models/' + file);
+});
+
 
 // setting up mincer (sprocket style) asset manager
 var connectMincer = new ConnectMincer({
