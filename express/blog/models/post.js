@@ -17,24 +17,23 @@ var PostSchema = new Schema({
 });
 
 /**
-* Methods
+ * Pre-save hook
+ */
+
+PostSchema.pre('save', function(next) {
+
+});
+
+/**
+* Instance methods
 */
 
-PostSchema.methods = {
+PostSchema.methods = {}
 
-  /**
-  * Create a new post record
-  * 
-  * @param {Object} req
-  * @param {Object} res
-  */
+/**
+* Static methods
+*/
 
-  create: function (){
-    this.save(function(err, result) {
-      if (err) return console.error(err);
-      //result.something...
-    });
-  }
-}
+PostSchema.statics = {}
 
 mongoose.model('Post', PostSchema);

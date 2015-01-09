@@ -15,8 +15,12 @@ var Post = mongoose.model('Post');
 router.route('/posts')
   .post(function(req, res) {
     var post = new Post(req.body)
-    post.create();
-    res.render('posts/index');
+    post.save(function(err) {
+      if (err) {
+        return res.render('posts/new');
+      }
+      return res.render('posts/index');
+    });
   })
 
   .get(function(req, res) {
