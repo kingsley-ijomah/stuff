@@ -13,18 +13,26 @@ var Post = mongoose.model('Post');
 */
 
 router.route('/posts')
+  // handle post data to be saved
   .post(function(req, res) {
     var post = new Post(req.body)
     post.save(function(err) {
-      if (err) {
-        return res.render('posts/new');
-      }
-      return res.render('posts/index');
+
+    });
+    Post.find(function(err, posts) {
+      res.render('posts/index', {
+        posts: posts
+      });
     });
   })
 
+  // handle reading all posts
   .get(function(req, res) {
-  	res.render('posts/index');
+    Post.find(function(err, posts) {
+      res.render('posts/index', {
+        posts: posts
+      });
+    });
   });
 
 router.route('/posts/new')

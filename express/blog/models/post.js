@@ -21,7 +21,7 @@ var PostSchema = new Schema({
  */
 
 PostSchema.pre('save', function(next) {
-
+  next();
 });
 
 /**
