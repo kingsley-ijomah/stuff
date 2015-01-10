@@ -7,7 +7,12 @@
     <title>Kingsley's Blog</title>
 
     <%- css('main.css') %>
-    <%- css('application.js') %>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <%- js('application.js') %>
+    <!-- TODO: use manifest -->
+    <%- js('chosen_v1.3.0/chosen.jquery.js') %>
+
     <!-- method from ejs-mate callable from views -->
     <%- block('head').toString() %>
 
@@ -22,9 +27,7 @@
 
     <%- body %>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+    <!-- Display twitter follow plugin -->
     <script type="text/javascript">
       window.twttr = (function (d, s, id) {
         var t, js, fjs = d.getElementsByTagName(s)[0];
@@ -35,5 +38,22 @@
         return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
       }(document, "script", "twitter-wjs"));
     </script>
+
+    <!-- Configure chosen helper -->
+    <script type="text/javascript">
+      var config = {
+        '.chosen-select'           : {},
+        '.chosen-select-deselect'  : {allow_single_deselect:true},
+        '.chosen-select-no-single' : {disable_search_threshold:10},
+        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+        '.chosen-select-width'     : {width:"95%"}
+      }
+      for (var selector in config) {
+        $(selector).chosen(config[selector]);
+      }
+    </script>
+
+    
   </body>
 </html>
+
