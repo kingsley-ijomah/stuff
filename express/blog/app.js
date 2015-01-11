@@ -85,7 +85,12 @@ app.set('view engine', 'ejs');
 app.engine('ejs', engine);
 
 app.get('/', function(req, res) {
-  res.render('posts/index');
+  var Post = mongoose.model('Post');
+  Post.find(function(err, posts) {
+    res.render('posts/index', {
+      posts: posts
+    });
+  });
 });
 
 // map static pages
