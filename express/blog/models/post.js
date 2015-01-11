@@ -11,9 +11,11 @@ var Schema = mongoose.Schema;
 */
 
 var PostSchema = new Schema({
-    title: String,
-    tags: String,
-    article: String
+  title: String,
+  tags: String,
+  article: String,
+  created_at: Date,
+  updated_at: Date
 });
 
 /**
@@ -21,6 +23,11 @@ var PostSchema = new Schema({
  */
 
 PostSchema.pre('save', function(next) {
+	var now = new Date();
+	if (!this.created_at) {
+		this.created_at = now;
+	}
+	this.updated_at = now;
   next();
 });
 
