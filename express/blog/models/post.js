@@ -12,7 +12,7 @@ var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
   title: String,
-  tags: String,
+  tags: {type: []},
   article: String,
   created_at: Date,
   updated_at: Date
