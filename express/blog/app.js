@@ -19,6 +19,7 @@ var ConnectMincer = require('connect-mincer');
 var engine = require('ejs-mate');
 var fs = require('fs');
 var mongoose = require('mongoose');
+var helpers = require('view-helpers')
 
 var app = express();
 
@@ -56,6 +57,11 @@ app.use(connectMincer.assets());
 
 if (process.env.NODE_ENV !== 'production')
   app.use('/assets', connectMincer.createServer());
+
+// make sure you declare this middleware after `connect-flash` and `express.session` 
+// middlewares and before `express.router`
+// for API checkout https://github.com/madhums/node-view-helpers
+app.use(helpers('blog'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
