@@ -18,9 +18,9 @@
             </div>
 
             <footer>
-                <span class="label label-default">code</span>
-                <span class="label label-default">programming</span>
-                <span class="label label-default">coding</span>
+                <% post.tags.forEach(function(tag) { %>
+                  <span class="label label-default"><%- tag %></span>
+                <% }) %>
             </footer>
             <hr>
           </article>
