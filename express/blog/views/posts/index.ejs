@@ -3,12 +3,11 @@
 <%- partial('../partials/_nav') %>
 
 <%
-  function doSomething() {
-    return 1 + 1;
+  function excerpt(content, num) {
+    return content.split(/\s+/).slice(0, num).join(" ");
   }
 %>
 
-<%- doSomething() %>
 
 <div class="container-fluid" id="container">
   <div class="row">
@@ -21,7 +20,7 @@
             <footer><small>Posted on: <%- formatDate(post.created_at) %></small></footer>
 
             <div class="lead">
-              <%- post.article %>
+              <%- excerpt(post.article, 30) %>
               <a href="/posts/view" style="font-size: 20px;">Read More</a>
             </div>
 
