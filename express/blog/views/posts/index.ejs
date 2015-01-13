@@ -2,6 +2,14 @@
 <% layout('boilerplate') -%>
 <%- partial('../partials/_nav') %>
 
+<%
+  function doSomething() {
+    return 1 + 1;
+  }
+%>
+
+<%- doSomething() %>
+
 <div class="container-fluid" id="container">
   <div class="row">
     <%- partial('../partials/_profile') %>

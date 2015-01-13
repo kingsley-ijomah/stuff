@@ -21,7 +21,7 @@ router.route('/posts')
     });
     Post.find(function(err, posts) {
       res.locals.posts = posts
-      return res.redirect('/posts/index');
+      return res.redirect('/posts');
     });
   })
 
@@ -29,7 +29,7 @@ router.route('/posts')
   .get(function(req, res) {
     Post.find(function(err, posts) {
       res.locals.posts = posts
-      res.redirect('posts/index');
+      res.render('posts/index');
     });
   });
 

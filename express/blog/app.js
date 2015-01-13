@@ -94,7 +94,7 @@ app.get('/', function(req, res) {
   var Post = mongoose.model('Post');
   Post.find(function(err, posts) {
     res.locals.posts = posts;
-    res.redirect('posts/index');
+    res.redirect('/posts');
   });
 });
 
