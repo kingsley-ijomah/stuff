@@ -93,9 +93,8 @@ app.engine('ejs', engine);
 app.get('/', function(req, res) {
   var Post = mongoose.model('Post');
   Post.find(function(err, posts) {
-    res.render('posts/index', {
-      posts: posts
-    });
+    res.locals.posts = posts;
+    res.redirect('posts/index');
   });
 });
 

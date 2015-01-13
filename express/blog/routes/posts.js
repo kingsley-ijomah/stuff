@@ -20,18 +20,16 @@ router.route('/posts')
 
     });
     Post.find(function(err, posts) {
-      res.render('posts/index', {
-        posts: posts
-      });
+      res.locals.posts = posts
+      return res.redirect('/posts/index');
     });
   })
 
   // handle reading all posts
   .get(function(req, res) {
     Post.find(function(err, posts) {
-      res.render('posts/index', {
-        posts: posts
-      });
+      res.locals.posts = posts
+      res.redirect('posts/index');
     });
   });
 
