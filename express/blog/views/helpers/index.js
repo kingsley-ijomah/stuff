@@ -6,12 +6,15 @@
  * @api public
 */
 
-	function helpers() {
-		return function(req, res, next) {
-			res.locals.excerpt = excerpt;
+	function helpers (appName) {
+		return function (req, res, next) {
+			res.locals.appName = appName || 'App'
+			res.locals.excerpt = excerpt
 			next()
 		}
 	}
+
+	module.exports = helpers
 
 /**
  * Excerpt helper
@@ -25,5 +28,3 @@
   function excerpt(content, length) {
 	  return content.split(/\s+/).slice(0, length).join(" ");
   }
-
-  module.exports = helpers;

@@ -58,18 +58,11 @@ app.use(connectMincer.assets());
 if (process.env.NODE_ENV !== 'production')
   app.use('/assets', connectMincer.createServer());
 
-function excerpt(content, length) {
-  return content.split(/\s+/).slice(0, length).join(" ");
-}
-
 // make sure you declare this middleware after `connect-flash` and `express.session` 
 // middlewares and before `express.router`
 // for API checkout https://github.com/madhums/node-view-helpers
 app.use(view_helpers('blog'));
-app.use(function(req, res, next) {
-  res.locals.excerpt = excerpt
-  next()
-});
+app.use(require('./views/helpers')('Blog'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -86,7 +79,7 @@ app.use(require('./routes/posts'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
-//use .html extensions instead of .handlebars/hbs
+// use .html extensions instead of .handlebars/hbs
 // app.set('view engine', 'html');
 // app.engine('html', require('hbs').__express);
 
