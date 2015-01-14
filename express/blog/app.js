@@ -48,7 +48,8 @@ var connectMincer = new ConnectMincer({
   paths: [
     'assets/css',
     'assets/js',
-    'vendor/js'
+    'vendor/js',
+    'vendor/css'
   ]
 });
 
