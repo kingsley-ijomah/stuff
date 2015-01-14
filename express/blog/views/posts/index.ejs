@@ -2,13 +2,6 @@
 <% layout('boilerplate') -%>
 <%- partial('../partials/_nav') %>
 
-<%
-  function excerpt(content, num) {
-    return content.split(/\s+/).slice(0, num).join(" ");
-  }
-%>
-
-
 <div class="container-fluid" id="container">
   <div class="row">
     <%- partial('../partials/_profile') %>
@@ -42,7 +35,7 @@
           <li><a href="#">4</a></li>
           <li><a href="#">5</a></li>
           <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-       </ul>
+        </ul>
      </nav>
     </div>
   </div>
