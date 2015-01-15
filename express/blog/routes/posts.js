@@ -45,7 +45,11 @@ router.route('/posts/archive')
 
 router.route('/posts/:post_id')
   .get(function(req, res) {
-    res.render('posts/view');
+    Post.findOne({_id: req.params.post_id}, function(err, post) {
+      if (err) return handleError(err);
+      res.locals.post = post
+      res.render('posts/view');
+    })
   })
 
   .put(function(req, res) {
