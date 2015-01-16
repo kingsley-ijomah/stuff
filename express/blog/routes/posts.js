@@ -17,10 +17,10 @@ router.route('/posts')
   .post(function(req, res) {
     var post = new Post(req.body)
     post.save(function(err) {
-
-    });
-    Post.find(function(err, posts) {
-      res.locals.posts = posts
+      if (err) {
+        res.locals.errors = err.errors;
+        return res.render('posts/new');
+      }
       return res.redirect('/posts');
     });
   })
