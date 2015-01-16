@@ -11,16 +11,16 @@
         <h3>New Post</h3>
         <p>
           <small class="text-danger">
-            <% if (errors.title) { %>
+            <% if (typeof errors !== 'undefined' && errors.hasOwnProperty('title')) { %>
               <%- errors.title %>
             <% } %>
           </small>
           <label class="sr-only">Title</label>
-          <input type="text" class="form-control" placeholder="Title" name="title" autofocus>
+          <input type="text" class="form-control" placeholder="Title" name="title" required autofocus>
         </p>
         <p>
           <small class="text-danger">
-            <% if (errors.tags) { %>
+            <% if (typeof errors !== 'undefined' && errors.hasOwnProperty('tags')) { %>
               <%- errors.tags %>
             <% } %>
           </small>
@@ -35,12 +35,12 @@
         </p>
         <p>
           <small class="text-danger">
-            <% if (errors.article) { %>
+            <% if (typeof errors !== 'undefined' && errors.hasOwnProperty('article')) { %>
               <%- errors.article %>
             <% } %>
           </small>
           <label class="sr-only">Article</label>
-          <textarea class="form-control" placeholder="Article" id="textarea" name="article"></textarea>
+          <textarea class="form-control" placeholder="Article" id="textarea" name="article" required></textarea>
         </p>
         <p><input type="submit" value="Post Article" class="btn btn-primary"></p>
       </form>
