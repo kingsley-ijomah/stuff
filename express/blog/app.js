@@ -20,6 +20,7 @@ var engine = require('ejs-mate');
 var fs = require('fs');
 var mongoose = require('mongoose');
 var view_helpers = require('view-helpers');
+var router = express.Router();
 
 var app = express();
 
@@ -69,6 +70,7 @@ app.use(require('./views/helpers')('Blog'));
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
+
 // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -79,10 +81,6 @@ app.use(require('./routes/posts'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-
-// use .html extensions instead of .handlebars/hbs
-// app.set('view engine', 'html');
-// app.engine('html', require('hbs').__express);
 
 // make use of the ejs template
 app.set('view engine', 'ejs');

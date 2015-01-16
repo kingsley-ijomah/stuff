@@ -19,6 +19,14 @@ var PostSchema = new Schema({
 });
 
 /**
+* Validations
+*/
+
+PostSchema.path('title').required(true, 'Post title cannot be blank');
+PostSchema.path('tags').required(true, 'Post tags cannot be blank');
+PostSchema.path('article').required(true, 'Post article cannot be blank');
+
+/**
  * Pre-save hook
  */
 
