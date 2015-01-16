@@ -10,20 +10,14 @@
       <form method="POST" action="/posts">
         <h3>New Post</h3>
         <p>
+          <label class="sr-only">Title</label>
+          <input type="text" class="form-control" placeholder="Title" name="title" required autofocus>
           <small class="text-danger">
             <% if (typeof errors !== 'undefined' && errors.hasOwnProperty('title')) { %>
               <%- errors.title %>
             <% } %>
-          </small>
-          <label class="sr-only">Title</label>
-          <input type="text" class="form-control" placeholder="Title" name="title" required autofocus>
-        </p>
+          </small>        </p>
         <p>
-          <small class="text-danger">
-            <% if (typeof errors !== 'undefined' && errors.hasOwnProperty('tags')) { %>
-              <%- errors.tags %>
-            <% } %>
-          </small>
           <label class="sr-only">Tags</label>
           <select data-placeholder="Select tags" multiple class="chosen-select form-control multiselect" name="tags">
             <option></option>
@@ -32,15 +26,20 @@
             <option>coding</option>
             <option>programming</option>
           </select>
+          <small class="text-danger">
+            <% if (typeof errors !== 'undefined' && errors.hasOwnProperty('tags')) { %>
+              <%- errors.tags %>
+            <% } %>
+          </small>
         </p>
         <p>
+          <label class="sr-only">Article</label>
+          <textarea class="form-control" placeholder="Article" id="textarea" name="article" required></textarea>
           <small class="text-danger">
             <% if (typeof errors !== 'undefined' && errors.hasOwnProperty('article')) { %>
               <%- errors.article %>
             <% } %>
           </small>
-          <label class="sr-only">Article</label>
-          <textarea class="form-control" placeholder="Article" id="textarea" name="article" required></textarea>
         </p>
         <p><input type="submit" value="Post Article" class="btn btn-primary"></p>
       </form>
