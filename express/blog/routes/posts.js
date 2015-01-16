@@ -19,6 +19,7 @@ router.route('/posts')
     post.save(function(err) {
       if (err) {
         res.locals.errors = err.errors;
+        res.locals.post = post;
         return res.render('posts/new');
       }
       return res.redirect('/posts');
@@ -35,7 +36,7 @@ router.route('/posts')
 
 router.route('/posts/new')
   .get(function(req, res) {
-    res.render('posts/new');
+    res.render('posts/new', new Post({}));
   });
 
 router.route('/posts/archive')
