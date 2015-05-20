@@ -1,0 +1,68 @@
+<%- css('article') %>
+<% layout('boilerplate') -%>
+<%- partial('../partials/_nav') %>
+
+<div class="container-fluid" id="container">
+  <div class="row">
+    <%- partial('../partials/_profile') %>
+
+    <div class="col-md-8">
+      <h1><%- post.title %></h1>
+      <div class="lead"><%- post.article %></div>
+
+      <div id="comments">
+        <h2>Comments</h2>
+
+        <div class="row">
+          <div class="col-md-11">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+            </p>
+            <footer>
+              <small><b>Kingsley Ijomah</b> Commented on: 8 Jan 2015</small>
+            </footer>
+            <hr>
+          </div>
+          <div class="col-md-1 comment-num">01</div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-11">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+            </p>
+            <footer>
+              <small><b>Kingsley Ijomah</b> Commented on: 8 Jan 2015</small>
+            </footer>
+            <hr>
+          </div>
+          <div class="col-md-1 comment-num">02</div>
+        </div>
+      </div>
+
+      <form>
+        <h3>Have your say</h3>
+        <p>
+          <label class="sr-only">Message</label>
+          <textarea class="form-control" placeholder="Message" id="message" required autocomplete="false"></textarea>
+        </p>
+        
+
+        <p>
+          <label class="sr-only">Full name</label>
+          <input type="text" class="form-control" placeholder="Full Name" required>
+        </p>
+        <p>
+          <label class="sr-only">Email Address</label>
+          <input type="email" class="form-control" placeholder="Email Address" required>
+        </p>
+        <p>
+          <input type="submit" value="Send Message" class="btn btn-primary">
+        </p>
+      </form>
+    </div>
+  </div>
+
+</div>

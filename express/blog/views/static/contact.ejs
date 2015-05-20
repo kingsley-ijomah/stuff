@@ -1,0 +1,43 @@
+<%- css('contact') %>
+<% layout('boilerplate') -%>
+<%- partial('../partials/_nav') %>
+
+<div class="container-fluid" id="container">
+  <div class="row">
+    <%- partial('../partials/_profile') %>
+
+    <div class="col-md-8">
+      <h1>Contact me</h1>
+      <div class="lead">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+      
+      <hr>
+      <p>twitter: <a href="http://twitter.com/kingsleyijomah">@kingsleyijomah</a></p>
+      <p>linkedin: <a href="https://www.linkedin.com/pub/kingsley-ijomah/13/784/950">follow me on linkedIn</a></p>
+      <p>Github: <a href="https://github.com/kingsley-ijomah">follow me on github</a></p>
+      
+      <hr>
+
+      <div class="row">
+        <div class="col-md-9">
+          <form>
+            <h3>Send me a message</h3>
+            <p>
+              <label class="sr-only">Your Name</label>
+              <input type="email" class="form-control" placeholder="Your Name" required autofocus>
+            </p>
+            <p>
+              <label class="sr-only">Your Message</label>
+              <textarea class="form-control" placeholder="Your Message" id="textarea" required></textarea>
+            </p>
+            <p><input type="submit" value="Send Message" class="btn btn-primary"></p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
