@@ -4,9 +4,14 @@ public class FinalB {
 	String firstName;
 	String lastName;
 	Integer age;
+	final String country;
+	
+	FinalB(String c) {
+		country = c;
+	}
 	
 	public static void main(String[] args) {
-		final FinalB object = new FinalB();
+		final FinalB object = new FinalB("uk");
 		
 		//initialize our instance variables
 		object.firstName = "kingsley";
