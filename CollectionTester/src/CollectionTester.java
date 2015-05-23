@@ -17,10 +17,8 @@ public class CollectionTester {
 		setOfIntegers.add(9);
 		setOfIntegers.remove(1);
 		
-		HashMap<String, Integer> mapOfStringToIntegers = new HashMap<String, Integer>();
-		mapOfStringToIntegers.put("Kingsley", 2);
-		mapOfStringToIntegers.put("Bob", 20);
-		mapOfStringToIntegers.put("Danielle", 20);
-		mapOfStringToIntegers.remove("Bob");
+		HashMap<String, int[]> mapOfStringToIntegers = new HashMap<String, int[]>();
+		mapOfStringToIntegers.put("Kingsley", new int[] {1,2,3,4});
+		System.out.println(mapOfStringToIntegers.get("Kingsley"));
 	}
 }
