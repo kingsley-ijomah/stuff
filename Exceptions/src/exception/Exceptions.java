@@ -13,8 +13,13 @@ public class Exceptions {
 		p("thrown error: " + exp.error + " with code: " + exp.code);
 		
 		// throws an exception
-		p("call Sample's name field " + exp.sample.getName());
+		// p("call Sample's name field " + exp.sample.getName());
+		
+		StackOverflow overflow = new StackOverflow();
+		// cause a stack overflow
+		// overflow.first();
 	}
+	
 	
 	public static void p(String i) {
 		System.out.println(i);
